@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Users</title>
+        <link rel="stylesheet" href="\static\style\style.css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+        function valid()
+            {
+                if(document.getElementById("searchInput").value=="")
+                {
+                    alert("Enter Username");
+                    document.getElementById("searchInput").focus();
+                    return false;
+                    }
+
+            }
+    </script>
+</head>
+<body>
+<form action="/searchDigBookFunc" method="post" onsubmit="return valid()">
+<div class="container mt-5">
+    <h3>Search Book</h3>
+    <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search for book...">
+    <button type="submit">Search</button>
+    <div id="results" class="list-group mt-3"></div>
+    <h6>Go back to<a href="/reHome" class="button small text-muted"> home...</a></h6></div>
+</div>
+</form>
+                <div class="list_items" {% if view == null %} style="pointer-events: none; opacity: 0;"{% endif %}>
+                    {% for i in res %}
+                                    <a class="list-group-item list-group-item-action">
+
+                                        <div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="ml-3">
+                                                <h3 class="mb-0">{{ i[1] }}</h3>
+                                                <p>Book Gener:<b> {{ i[2] }}</b><br>
+                                                Author    :<b> {{ i[3] }}</b><br>
+                                                Language  :<b> {{ i[4] }}</b><br>
+                                                Owned By :<b> {{ upBy[loop.index0] }}</b><br>
+
+                                                Availability :<b> {% if i[7] == 1 %} Available
+                                                        {% else %}
+                                                        Not Available
+                                                        {% endif %}
+                                                    </b></p>
+                                                <small class="text-muted">{{ bcap }}</small>
+                                                <input type="text" id="uid" name="uid" value="{{ bid }}" disabled hidden>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </a>
+                    {% endfor %}
+                    <div >
+                    <a href="/editPhyBook/{{ lid }}">
+                        <button type="button" style="width: 25%;
+                            height: 56px;
+                            border-radius: 0px;
+                            margin-left: 35px;
+                            border: none;
+                            outline: none;
+                            background: #626CD6;
+                            color: #fff;
+                            font-size: 18px;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                            cursor: pointer;
+                            margin-bottom: 28px;
+                            transition: 0.3s ease;">Edit Book</button></a>
+                        </div>
+                </div>
+</body>
+</html>

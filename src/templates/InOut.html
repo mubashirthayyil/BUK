@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BUK</title>
+  <link rel="stylesheet" href="\static\style\LoginPage.css" />
+
+  <script type="text/javascript">
+            function valid()
+            {
+                if(document.getElementById("uname").value=="")
+                {
+                    alert("Enter Your Username");
+                    document.getElementById("uname").focus();
+                    return false;
+                }
+        </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+      // Display the pop-up based on server response
+      function showAlert(message) {
+          alert(message);
+          }
+  </script>
+
+  <script>
+    $(document).ready(function() {
+        $('#valueForm').on('submit', function(event) {
+            event.preventDefault();  // Prevent the form from submitting normally
+
+            $.ajax({
+                url: '/check_value',  // Endpoint to check the value
+                type: 'POST',
+                data: $(this).serialize(),  // Send form data
+                success: function(response) {
+                    showAlert(response.message);  // Show alert box with response message
+                },
+                error: function() {
+                    showAlert("An error occurred. Please try again.");
+                }
+            });
+        });
+        });
+</script>
+
+
+
+</head>
+<body>
+  <div class="login_form">
+    <!-- Login form container -->
+    <form method="POST" action="/check_value" id="valueForm" onsubmit="return valid()">
+      <h2>BUK</h2>
+      <h5 style="margin-top: 10px;">Entry and Exit control</h5>
+
+      <!-- Email input box -->
+      <div class="input_box" style="margin-top: 30px;">
+        <!--<label for="email"></label>-->
+        <input type="text" name="lid" id="lid" placeholder="Enter your login id"  />
+      </div>
+
+       <!-- Login button -->
+      <button type="submit">Enter</button>
+      <p class="sign_up" style=" margin-top: 10px;">Go back to <a href="/reHome">Home...</a></p>
+    </form>
+  </div>
+</body>
+</html>

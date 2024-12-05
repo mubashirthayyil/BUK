@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BUK</title>
+  <link rel="stylesheet" href="\static\style\homePage.css" />
+
+</head>
+<body>
+  <div class="login_form">
+    <!-- Login form container -->
+    <!--<form action="/login" method="post" onsubmit="return valid()">-->
+      <div class="headDetails">
+        <p><h>Hi <b>{{ usr }}</b></h></p>
+        <p>Identification number: <b>{{ lid }}</b></p>
+      </div>
+
+       <!-- Login button -->
+      <a href="/editSelfLayout"> <button class="button">Edit Profile</button> </a>
+      <a href="/searchDigBook"> <button class="button">Search Digital Resources</button></a>
+      <a href="/viewNoti"> <button class="button">View Notifications</button></a>
+
+      <p class="sign_up" style=" margin-top: 10px;"><a href="/logout">Log out</a> your account!</p>
+    <!--</form>-->
+  </div>
+</body>
+</html>

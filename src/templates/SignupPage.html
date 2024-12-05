@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/SignupPage.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
+    <script type="text/javascript">
+    function valid()
+    {
+        if(document.getElementById("name").value=="")
+        {
+            alert("Enter Your Name!");
+            document.getElementById("name").focus();
+            return false;
+        }
+        if(/[^a-z\s]/gi.test(document.getElementById("name").value))
+        {
+            alert("Special characters are not allowed in name");
+            document.getElementById("name").focus();
+            return false;
+        }
+
+        if(document.getElementById("email").value=="")
+        {
+            alert("Enter your E-mail ID");
+            document.getElementById("email").focus();
+            return false;
+        }
+        var emailPat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        var emailid = document.getElementById("email").value;
+        var matchArray = emailid.match(emailPat);
+        if (matchArray == null)
+        {
+            alert("Your Email ID seems incorrect. Enter Correct Email ID.");
+            document.getElementById("email").focus();
+            return false;
+        }
+        if(document.getElementById("phone").value=="")
+        {
+            alert("Enter Phone Number");
+            document.getElementById("phone").focus();
+            return false;
+        }
+        if(/[^0-9]/gi.test(document.getElementById("phone").value))
+        {
+            alert("Special characters not allowed in Phone Number");
+            document.getElementById("phone").focus();
+            return false;
+        }
+        if(document.getElementById("dob").value=="")
+        {
+            alert("Please select date of birth");
+            document.getElementById("dob").focus();
+            return false;
+        }
+        if(document.getElementById("country").value=="0")
+        {
+            alert("Please select Country");
+            document.getElementById("country").focus();
+            return false;
+        }
+        if(document.getElementById("utype").value=="0")
+        {
+            alert("Please select user type");
+            document.getElementById("utype").focus();
+            return false;
+        }
+
+        if(document.getElementById("username").value=="")
+        {
+            alert("Please Create an username");
+            document.getElementById("dob").focus();
+            return false;
+        }
+        if(document.getElementById("pass1").value=="")
+        {
+            alert("Enter Password!");
+            document.getElementById("pass1").focus();
+            return false;
+        }
+        if(document.getElementById("pass1").value.length<8)
+        {
+            alert("Password must contain atleast 8 characters");
+            document.getElementById("pass1").focus();
+            return false;
+        }
+        if(document.getElementById("pass2").value=="")
+        {
+            alert("Enter Confirm Password!");
+            document.getElementById("pass2").focus();
+            return false;
+        }
+        if((document.getElementById("pass2").value)!=(document.getElementById("pass1").value))
+        {
+            alert("Password doesn't match!");
+            document.getElementById("pass2").focus();
+            return false;
+        }
+}
+    </script>
+    <title>Signup</title>
+</head>
+<body>
+
+<section class="vh-100" style="background-color: #626cd6; overflow: hidden;">
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px; background-color: #ADD2C2;
+                width: 100%;
+                background: #fff;
+                border-radius: 6px;
+                padding: 41px 30px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);">
+                <div class="card-body p-4 p-md-3">
+                    <div class="d-flex justify-content-center">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-3">Create Your Account</h3>
+                    </div>
+
+                    <form action="/signup" method="post" enctype="multipart/form-data" onsubmit="return valid()">
+                        <div class="row">
+                            <div class="col-md-12 mb-3 pb-2">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3 pb-2">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+                                       required>
+                            </div>
+                            <div class="col-md-12 mb-3 pb-2">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone Number"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 mb-3 d-flex align-items-center">
+                                <h6 class="mb-2 pb-1">Date Of Birth or Date of opening:</h6>
+                            </div>
+                            <div class="col-md-9 mb-3">
+                                <input type="date" id="dob" name="dob" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <h6 class="pb-1">Gender (Select library if it is a library account): </h6>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female"
+                                           required>
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                                    <label class="form-check-label" for="other">Other</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="lib" value="lib">
+                                    <label class="form-check-label" for="lib">Library</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <h4 class="mb-md-4">Create Username and Password</h4>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <div class="col-md-7 mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" id="username" name="username" class="form-control"
+                                       placeholder="Create a username" required>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="col-md-7 mb-3">
+                                <label for="pass1" class="form-label">Password</label>
+                                <input type="password" id="pass1" name="password" class="form-control"
+                                       placeholder="Enter password" minlength="8" required>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="col-md-7 mb-3">
+                                <label for="pass2" class="form-label">Confirm Password</label>
+                                <input type="password" id="pass2" name="psswd1" class="form-control"
+                                       placeholder="Confirm password" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary">Signup</button>
+                            </div>
+                            <center>
+                                <a href="/" class="button small text-muted">Go back to login...</a>
+                            </center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

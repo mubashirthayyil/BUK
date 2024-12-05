@@ -1,0 +1,170 @@
+<!---<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload</title>
+  <link rel="stylesheet" href="\static\style\LoginPage.css" />
+  <link rel="stylesheet" href="\static\style\pdfUpload.css">
+
+  <script type="text/javascript">
+            function valid()
+            {
+                if(document.getElementById("bname").value=="")
+                {
+                    alert("Enter book name");
+                    document.getElementById("uname").focus();
+                    return false;
+                }
+                if(document.getElementById("btype").value=="")
+                {
+                    alert("Enter enter book gener");
+                    document.getElementById("pass").focus();
+                    return false;
+                }
+                if(document.getElementById("bauthor").value=="")
+                {
+                    alert("Enter name of author");
+                    document.getElementById("pass").focus();
+                    return false;
+                }
+                if(document.getElementById("blang").value=="")
+                {
+                    alert("Enter the language of the book");
+                    document.getElementById("pass").focus();
+                    return false;
+                }
+                if( document.getElementById("file").files.length == 0 ){
+                    console.log("no files selected");
+                }
+                if(document.getElementById("file").files[0].name.value=="")
+                {
+                    alert("Upload your book");
+                    document.getElementById("pass").focus();
+                    return false;
+                }
+            }
+        </script>
+
+</head>
+<body>
+  <div class="login_form">
+    <form action="/upload" method="post" onsubmit="return valid()">
+      <h5 style="margin-top: 10px;">Upload your book</h5>
+
+      <div class="input_box" style="margin-top: 30px;">
+        <input type="text" name="bname" id="bname" placeholder="Enter book name"  />
+      </div>
+
+      <div class="input_box">
+        <input type="text" name="btype" id="btype" placeholder="Enter book gener"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="bauthor" id="bauthor" placeholder="Enter author name"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="blang" id="blang" placeholder="Enter book language"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="disc" id="disc" placeholder="Enter book discription"  />
+      </div>
+  <div class="card">
+    <div class="drop_box">
+      <header>
+        <label for="file"><h4>Select File here</h4></label>
+      </header>
+      <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
+      <input type="file" name="file" id="file" class="inputfile" />
+
+    </div>
+  </div>
+            <button class="btn" name="uploadBtn" type="submit">Upload</button>
+
+    </form>
+  </div>
+
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Book</title>
+  <link rel="stylesheet" href="/static/style/LoginPage.css" />
+  <link rel="stylesheet" href="/static/style/pdfUpload.css">
+
+  <script type="text/javascript">
+    function valid() {
+      if (document.getElementById("bname").value == "") {
+        alert("Enter book name");
+        document.getElementById("bname").focus();
+        return false;
+      }
+      if (document.getElementById("btype").value == "") {
+        alert("Enter book genre");
+        document.getElementById("btype").focus();
+        return false;
+      }
+      if (document.getElementById("bauthor").value == "") {
+        alert("Enter author's name");
+        document.getElementById("bauthor").focus();
+        return false;
+      }
+      if (document.getElementById("blang").value == "") {
+        alert("Enter the language of the book");
+        document.getElementById("blang").focus();
+        return false;
+      }
+      if (document.getElementById("file").files.length == 0) {
+        alert("Please upload your book file");
+        document.getElementById("file").focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="login_form">
+    <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="return valid()">
+      <h5 style="margin-top: 10px;">Upload Your Book</h5>
+
+      <div class="input_box" style="margin-top: 30px;">
+        <input type="text" name="bname" id="bname" placeholder="Enter book name" />
+      </div>
+
+      <div class="input_box">
+        <input type="text" name="btype" id="btype" placeholder="Enter book genre" />
+      </div>
+
+      <div class="input_box">
+        <input type="text" name="bauthor" id="bauthor" placeholder="Enter author's name" />
+      </div>
+
+      <div class="input_box">
+        <input type="text" name="blang" id="blang" placeholder="Enter book language" />
+      </div>
+
+      <div class="input_box">
+        <input type="text" name="disc" id="disc" placeholder="Enter book description" />
+      </div>
+
+      <div class="card">
+        <div class="drop_box">
+          <header>
+            <label for="file"><h4>Select File Here</h4></label>
+          </header>
+          <p>Files Supported: PDF, TEXT, DOC, DOCX</p>
+          <input type="file" name="file" id="file" class="inputfile" accept=".pdf,.txt,.doc,.docx" />
+        </div>
+      </div>
+
+      <button class="btn" name="uploadBtn" type="submit">Upload</button>
+      <center>
+      <p>Go back to<a href="/reHome" class="button small text-muted"> home...</a></p>
+        </center>
+    </form>
+  </div>
+</body>
+</html>

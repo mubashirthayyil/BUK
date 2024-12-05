@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload</title>
+  <link rel="stylesheet" href="\static\style\LoginPage.css" />
+  <link rel="stylesheet" href="\static\style\pdfUpload.css">
+
+  <script type="text/javascript">
+            function valid()
+            {
+                if(document.getElementById("bname").value=="")
+                {
+                    alert("Enter book name");
+                    document.getElementById("bname").focus();
+                    return false;
+                }
+                if(document.getElementById("btype").value=="")
+                {
+                    alert("Enter enter book type");
+                    document.getElementById("btype").focus();
+                    return false;
+                }
+                if(document.getElementById("bauthor").value=="")
+                {
+                    alert("Enter name of author");
+                    document.getElementById("bauthor").focus();
+                    return false;
+                }
+                if(document.getElementById("blang").value=="")
+                {
+                    alert("Enter the language of the book");
+                    document.getElementById("blang").focus();
+                    return false;
+                }
+            }
+        </script>
+
+</head>
+<body>
+  <div class="login_form">
+    <!-- Login form container -->
+    <form action="/phyBookUpload" method="post" onsubmit="return valid()">
+      <h5 style="margin-top: 10px;">Upload your book</h5>
+
+      <!-- Email input box -->
+      <div class="input_box" style="margin-top: 30px;">
+        <!--<label for="email"></label>-->
+        <input type="text" name="bname" id="bname" placeholder="Enter book name"  />
+      </div>
+
+      <!-- Paswwrod input box -->
+      <div class="input_box">
+        <input type="text" name="btype" id="btype" placeholder="Enter book gener"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="bauthor" id="bauthor" placeholder="Enter author name"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="blang" id="blang" placeholder="Enter book language"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="disc" id="disc" placeholder="Enter book discription"  />
+      </div>
+            <button class="btn" name="uploadBtn" type="submit">Upload</button>
+      <center>
+        <p>Go back to<a  href="/libHome" class="button small text-muted"> home...</a></p>
+      </center>
+
+    </form>
+  </div>
+
+</body>
+</html>

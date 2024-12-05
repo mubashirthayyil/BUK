@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Books</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .container {
+      width: 50%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .selected-books {
+      margin-top: 15px;
+    }
+    .book-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Select Books to Add</h2>
+    <form action="{{ url_for('add_books') }}" method="POST">
+      <!-- Dropdown for available books -->
+      <div>
+        <label for="book_dropdown">Select a Book:</label>
+        <select id="book_dropdown" name="book_dropdown">
+          <option value="">-- Choose a Book --</option>
+          {% for book in books %}
+            <option value="{{ book[0] }}">{{ book[1] }}</option>
+          {% endfor %}
+        </select>
+        <button type="button" onclick="addBook()">Add Book</button>
+      </div>
+
+      <!-- Dynamic list of selected books -->
+      <div class="selected-books" id="selected_books">
+        <h3>Selected Books:</h3>
+      </div>
+
+      <!-- Hidden input to hold selected book IDs -->
+      <input type="hidden" name="book_ids" id="book_ids">
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const selectedBooks = [];
+    const bookIdsInput = document.getElementById('book_ids');
+    const selectedBooksContainer = document.getElementById('selected_books');
+
+    function addBook() {
+      const dropdown = document.getElementById('book_dropdown');
+      const selectedValue = dropdown.value;
+      const selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+      if (selectedValue && !selectedBooks.includes(selectedValue)) {
+        selectedBooks.push(selectedValue);
+
+        // Add the selected book as a visible list item
+        const bookItem = document.createElement('div');
+        bookItem.classList.add('book-item');
+        bookItem.innerHTML = `<span>${selectedText}</span> <button type="button" onclick="removeBook('${selectedValue}')">Remove</button>`;
+        selectedBooksContainer.appendChild(bookItem);
+
+        // Update hidden input value
+        bookIdsInput.value = JSON.stringify(selectedBooks);
+      }
+    }
+
+    function removeBook(bookId) {
+      const index = selectedBooks.indexOf(bookId);
+      if (index > -1) {
+        selectedBooks.splice(index, 1);
+        bookIdsInput.value = JSON.stringify(selectedBooks);
+
+        // Remove the selected book item from the list
+        const bookItems = document.querySelectorAll('.book-item');
+        bookItems[index].remove();
+      }
+    }
+  </script>
+</body>
+</html>

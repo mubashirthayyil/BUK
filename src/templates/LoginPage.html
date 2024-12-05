@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BUK</title>
+  <link rel="stylesheet" href="\static\style\LoginPage.css" />
+
+  <script type="text/javascript">
+            function valid()
+            {
+                if(document.getElementById("uname").value=="")
+                {
+                    alert("Enter Your Username");
+                    document.getElementById("uname").focus();
+                    return false;
+                }
+                if(document.getElementById("pass").value=="")
+                {
+                    alert("Enter your Password");
+                    document.getElementById("pass").focus();
+                    return false;
+                }
+            }
+        </script>
+
+</head>
+<body>
+  <div class="login_form">
+    <!-- Login form container -->
+    <form action="/login" method="post" onsubmit="return valid()">
+      <h2>BUK</h2>
+      <h5 style="margin-top: 10px;">Log into your account</h5>
+
+      <!-- Email input box -->
+      <div class="input_box" style="margin-top: 30px;">
+        <!--<label for="email"></label>-->
+        <input type="text" name="uname" id="uname" placeholder="Enter username"  />
+      </div>
+
+      <!-- Password input box -->
+      <div class="input_box">
+        <input type="password" name="pass" id="pass" placeholder="Enter your password"  />
+      </div>
+
+       <!-- Login button -->
+      <button type="submit">Log In</button>
+      <p class="sign_up" style=" margin-top: 10px;">Don't have an account? <a href="/signuppage">Sign up</a></p>
+      <!--<p class="sign_up" style=" margin-top: 10px;">Go to <a href="/inout">Entry/Exit </a>control panel...</p>-->
+    </form>
+  </div>
+</body>
+</html>

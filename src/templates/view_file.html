@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View File</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/view_file.css') }}">
+</head>
+<body>
+    <div class="file-container">
+        <h2>File Viewer</h2>
+        {% if file_ext == '.pdf' %}
+            <iframe src="{{ url_for('static', filename=file_path) }}" width="100%" height="600px"></iframe>
+        {% elif file_ext == '.txt' %}
+            <pre class="text-file">
+                {% with open(file_path, 'r') as f %}
+                    {{ f.read() }}
+                {% endwith %}
+            </pre>
+        {% elif file_ext == '.doc' or file_ext == '.docx' %}
+            <p>
+                This document cannot be previewed directly.
+                <a href="{{ url_for('static', filename=file_path) }}" download>Download {{ file_ext[1:] }} file</a>
+            </p>
+        {% else %}
+            <p>Unsupported file type.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

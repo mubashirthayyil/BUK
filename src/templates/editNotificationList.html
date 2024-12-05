@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+        <link rel="stylesheet" href="\static\style\style.css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+        function valid()
+            {
+                if(document.getElementById("searchInput").value=="")
+                {
+                    alert("Enter Username");
+                    document.getElementById("searchInput").focus();
+                    return false;
+                    }
+
+            }
+    </script>
+</head>
+<body>
+<!--<form action="/inoutListFunc" method="post" onsubmit="return valid()">-->
+<div class="container mt-5">
+    <h3>Notifications</h3>
+    <!--<input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Enter user ID to get visit list...">
+    <button type="submit">Get Visit List</button>
+    <div id="results" class="list-group mt-3"></div>-->
+    <p>Go back to<a href="/reHome" class="button small text-muted"> home...</a></p>
+
+<!--</form>-->
+</div>
+                    {% for i in notif %}
+                    {% set nid = i[0] %}
+                    <form action="/editNotiLayout/{{ nid }}" method="post" enctype="multipart/form-data" onsubmit="return valid()">
+                            <a href="/editNotif/{{ nid }}" class="list-group-item list-group-item-action">
+                                <div class="list_items">
+                            <div>
+                                <h4>{{ i[1] }}</h4>
+                                <div class="d-flex align-items-center">
+                                    <div class="ml-3">
+                                        <p class="small text-muted">{{ i[2] }} <br><br></p>
+                                        <p>Contact us: {{ i[3] }}<br>
+                                            Uploaded by: {{ user[loop.index0] }}<br>
+                                            Uploaded on: {{ i[5] }}<br>
+                                            Event ends on: {{ i[6] }}<br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                                <!--<button type="submit">Edit</button>-->
+                        </a>
+                        </form>
+                    {% endfor %}
+
+
+</body>
+</html>

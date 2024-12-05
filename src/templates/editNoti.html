@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload</title>
+  <link rel="stylesheet" href="\static\style\LoginPage.css" />
+  <link rel="stylesheet" href="\static\style\pdfUpload.css">
+
+  <script type="text/javascript">
+            function valid()
+            {
+                if(document.getElementById("head").value=="")
+                {
+                    alert("Enter book name");
+                    document.getElementById("head").focus();
+                    return false;
+                }
+            }
+        </script>
+
+</head>
+<body>
+  <div class="login_form">
+    <!-- Login form container -->
+    <form action="/updateNoti/{{ uresult[0] }}" method="post" onsubmit="return valid()">
+      <h5 style="margin-top: 10px;">Crerate Notification</h5>
+
+      <!-- Email input box -->
+      <div class="input_box" style="margin-top: 30px;">
+        <!--<label for="email"></label>-->
+        <input type="text" name="head" id="head" placeholder="{{ uresult[1] }}" required />
+      </div>
+      <div class="input_box">
+        <input type="text" name="disc" id="disc" placeholder="{{ uresult[2] }}"  required/>
+      </div>
+      <div class="input_box">
+        <input type="text" name="contact" id="contact" placeholder="{{ uresult[3] }}"  required/>
+      </div>
+      <div class="input_box">
+        <center><label for="ldate">Event ending date</label></center>
+        <input type="date" name="ldate" id="ldate" placeholder="{{ uresult[6] }}"  required/>
+      </div>
+
+            <button class="btn" name="uploadBtn" type="submit">Update</button>
+      <center>
+        <p>Go back to<a  href="/libHome" class="button small text-muted"> home...</a></p>
+      </center>
+
+    </form>
+  </div>
+
+</body>
+</html>

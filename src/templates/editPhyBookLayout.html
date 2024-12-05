@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload</title>
+  <link rel="stylesheet" href="\static\style\LoginPage.css" />
+  <link rel="stylesheet" href="\static\style\pdfUpload.css">
+
+  <script type="text/javascript">
+            function valid()
+            {
+                if(document.getElementById("bname").value=="")
+                {
+                    alert("Enter book name");
+                    document.getElementById("bname").focus();
+                    return false;
+                }
+                if(document.getElementById("btype").value=="")
+                {
+                    alert("Enter enter book type");
+                    document.getElementById("btype").focus();
+                    return false;
+                }
+                if(document.getElementById("bauthor").value=="")
+                {
+                    alert("Enter name of author");
+                    document.getElementById("bauthor").focus();
+                    return false;
+                }
+                if(document.getElementById("blang").value=="")
+                {
+                    alert("Enter the language of the book");
+                    document.getElementById("blang").focus();
+                    return false;
+                }
+            }
+        </script>
+
+</head>
+<body>
+  <div class="login_form">
+    <!-- Login form container -->
+    <form action="/phyBookUpdate" method="post" onsubmit="return valid()">
+      <h5 style="margin-top: 10px;">Update your book</h5>
+
+      <!-- Email input box -->
+      <div class="input_box" style="margin-top: 30px;">
+        <!--<label for="email"></label>-->
+        <input type="text" name="bname" id="bname" value="{{ res[1] }}"  />
+      </div>
+
+      <!-- Paswwrod input box -->
+      <div class="input_box">
+        <input type="text" name="btype" id="btype" value="{{ res[2] }}"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="bauthor" id="bauthor" value="{{ res[3] }}"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="blang" id="blang" value="{{ res[4] }}"  />
+      </div>
+      <div class="input_box">
+        <input type="text" name="disc" id="disc" value="{{ res[5] }}"  />
+      </div>
+            <button class="btn" name="uploadBtn" type="submit">Upload</button>
+      {% set bid = res[0] %}
+            <a href="/delPhyBook/{{ bid }}"><button class="btn" name="uploadBtn" type="button" onclick="">Delete Book</button></a>
+      <center>
+        <p>Go back to<a  href="/libHome" class="button small text-muted"> home...</a></p>
+      </center>
+
+    </form>
+  </div>
+
+</body>
+</html>

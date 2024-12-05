@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BUK</title>
+  <link rel="stylesheet" href="\static\style\homePage.css" />
+
+</head>
+<body>
+  <div class="login_form">
+    <!-- Login form container -->
+    <!--<form action="/login" method="post" onsubmit="return valid()">-->
+      <div class="headDetails">
+        <p><h>Hi <b>{{ usr }}</b></h></p>
+        <p>Identification number: <b>{{ lid }}</b></p>
+      </div>
+
+       <!-- Login button -->
+      <a href="/editSelfLayout"> <button class="button">Edit Profile</button> </a>
+      <a href="/searchPhyBook"> <button class="button">Search Books On Library</button></a>
+      <a href="/editPhyBookSearch"> <button class="button">Edit Books On Library</button></a>
+      <a href="/addPhyBook"> <button class="button">Add Physical Book</button> </a>
+      <a href="/searchDigBook"> <button class="button">Search Digital Resources</button></a>
+      <a href="/addDigBook"> <button class="button">Add Digital Resource</button> </a>
+      <a href="/search"> <button class="button">Search User</button> </a>
+      <a href="/addUserlib"> <button class="button">Add User</button> </a>
+      <a href="/inout"> <button class="button">Visit Panel</button> </a>
+      <a href="/inoutList"> <button class="button">Visit List</button> </a>
+      <a href="/viewNoti"> <button class="button">View Notifications</button></a>
+      <a href="/createNoti"> <button class="button">Create Notifications</button></a>
+      <a href="/editNotiList"> <button class="button">Edit Notifications</button></a>
+      <a href="/catelog"> <button class="button">Catelog</button></a>
+
+      <p class="sign_up" style=" margin-top: 10px;"><a href="/logout">Log out</a> your account!</p>
+    <!--</form>-->
+  </div>
+</body>
+</html>
